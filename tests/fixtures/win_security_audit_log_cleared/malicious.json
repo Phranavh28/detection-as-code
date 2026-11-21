@@ -1,0 +1,13 @@
+[
+  {
+    "_note": "Security log cleared by a user account after hands on keyboard activity",
+    "EventID": 1102,
+    "Channel": "Security",
+    "Provider_Name": "Microsoft-Windows-Eventlog",
+    "Computer": "WS01.corp.local",
+    "TimeCreated": "2026-11-20T23:41:07Z",
+    "SubjectUserName": "jdoe",
+    "SubjectDomainName": "CORP",
+    "SubjectLogonId": "0x3e7a21"
+  }
+]

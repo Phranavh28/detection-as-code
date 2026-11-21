@@ -1,0 +1,33 @@
+name: Detection CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test-and-convert:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Validate rules against the Sigma specification
+        run: sigma check rules/
+
+      - name: Unit test every rule (fires on attacks, silent on benign)
+        run: pytest -v
+
+      - name: Convert rules to Splunk, Sentinel / Defender XDR and Elastic queries
+        run: python scripts/convert_all.py
+
+      - name: Publish converted queries
+        uses: actions/upload-artifact@v4
+        with:
+          name: siem-queries
+          path: queries/

@@ -1,0 +1,35 @@
+[
+  {
+    "_note": "Classic hidden download cradle launched from cmd.exe with -enc",
+    "EventID": 1,
+    "Channel": "Microsoft-Windows-Sysmon/Operational",
+    "Computer": "WS03.corp.local",
+    "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "OriginalFileName": "PowerShell.EXE",
+    "CommandLine": "powershell.exe -NoP -NonI -W Hidden -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkA",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\jdoe"
+  },
+  {
+    "_note": "PowerShell 7 with the full -EncodedCommand switch, spawned by Word",
+    "EventID": 1,
+    "Channel": "Microsoft-Windows-Sysmon/Operational",
+    "Computer": "WS05.corp.local",
+    "Image": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "OriginalFileName": "pwsh.dll",
+    "CommandLine": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -EncodedCommand dwBoAG8AYQBtAGkA",
+    "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+    "User": "CORP\\asmith"
+  },
+  {
+    "_note": "Renamed PowerShell binary still caught by OriginalFileName",
+    "EventID": 1,
+    "Channel": "Microsoft-Windows-Sysmon/Operational",
+    "Computer": "WS05.corp.local",
+    "Image": "C:\\Users\\Public\\update.exe",
+    "OriginalFileName": "PowerShell.EXE",
+    "CommandLine": "update.exe -ec JABwAD0AMQA=",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\asmith"
+  }
+]

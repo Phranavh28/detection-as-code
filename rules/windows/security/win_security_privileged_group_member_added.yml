@@ -1,0 +1,48 @@
+title: Member Added To A Privileged Windows Group
+id: f14df054-d144-4ea6-82d6-52123d32463c
+status: experimental
+description: |
+  Detects an account being added to a highly privileged Active Directory or
+  local group such as Domain Admins, Enterprise Admins or the local
+  Administrators group. Matching on the group SID as well as the name keeps
+  the rule working on non English systems and when a group is renamed.
+references:
+  - https://attack.mitre.org/techniques/T1098/
+  - https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4728
+author: Phranavh Sivaraman
+date: 2026-11-21
+tags:
+  - attack.persistence
+  - attack.privilege-escalation
+  - attack.t1098
+logsource:
+  product: windows
+  service: security
+detection:
+  selection_event:
+    EventID:
+      - 4728  # member added to a security enabled global group
+      - 4732  # member added to a security enabled local group
+      - 4756  # member added to a security enabled universal group
+  selection_target_name:
+    TargetUserName:
+      - Domain Admins
+      - Enterprise Admins
+      - Schema Admins
+      - Administrators
+      - Account Operators
+      - Backup Operators
+  selection_target_sid:
+    - TargetSid|endswith:
+        - '-512'  # Domain Admins
+        - '-518'  # Schema Admins
+        - '-519'  # Enterprise Admins
+    - TargetSid:
+        - S-1-5-32-544  # BUILTIN Administrators
+        - S-1-5-32-548  # Account Operators
+        - S-1-5-32-551  # Backup Operators
+  condition: selection_event and 1 of selection_target_*
+falsepositives:
+  - Approved changes made by identity or IT administrators; check the change ticket and who made the change (SubjectUserName)
+  - Automated provisioning accounts that manage group membership
+level: high

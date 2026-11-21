@@ -1,0 +1,11 @@
+name: Windows Security events to the Microsoft Sentinel SecurityEvent table
+priority: 5
+transformations:
+  - id: securityevent_table
+    type: set_state
+    key: query_table
+    val: SecurityEvent
+  - id: provider_to_eventsource
+    type: field_name_mapping
+    mapping:
+      Provider_Name: EventSourceName

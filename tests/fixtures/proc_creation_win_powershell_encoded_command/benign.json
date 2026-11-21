@@ -1,0 +1,35 @@
+[
+  {
+    "_note": "Admin running a backup script normally",
+    "EventID": 1,
+    "Channel": "Microsoft-Windows-Sysmon/Operational",
+    "Computer": "SRV02.corp.local",
+    "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "OriginalFileName": "PowerShell.EXE",
+    "CommandLine": "powershell.exe -ExecutionPolicy Bypass -File C:\\Scripts\\backup.ps1",
+    "ParentImage": "C:\\Windows\\System32\\svchost.exe",
+    "User": "CORP\\svc_backup"
+  },
+  {
+    "_note": "A non PowerShell tool that happens to use a -enc flag must not match",
+    "EventID": 1,
+    "Channel": "Microsoft-Windows-Sysmon/Operational",
+    "Computer": "WS09.corp.local",
+    "Image": "C:\\Tools\\ffmpeg\\ffmpeg.exe",
+    "OriginalFileName": "ffmpeg.exe",
+    "CommandLine": "ffmpeg.exe -i input.mov -enc libx264 output.mp4",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\asmith"
+  },
+  {
+    "_note": "Interactive PowerShell session with no arguments",
+    "EventID": 1,
+    "Channel": "Microsoft-Windows-Sysmon/Operational",
+    "Computer": "WS03.corp.local",
+    "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "OriginalFileName": "PowerShell.EXE",
+    "CommandLine": "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\"",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\jdoe"
+  }
+]

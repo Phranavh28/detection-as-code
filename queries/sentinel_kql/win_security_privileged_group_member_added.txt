@@ -1,0 +1,2 @@
+SecurityEvent
+| where (EventID in~ ("4728", "4732", "4756")) and ((TargetUserName in~ ("Domain Admins", "Enterprise Admins", "Schema Admins", "Administrators", "Account Operators", "Backup Operators")) or ((TargetSid endswith "-512" or TargetSid endswith "-518" or TargetSid endswith "-519") or (TargetSid in~ ("S-1-5-32-544", "S-1-5-32-548", "S-1-5-32-551"))))

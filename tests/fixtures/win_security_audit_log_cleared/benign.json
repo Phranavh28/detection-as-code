@@ -1,0 +1,25 @@
+[
+  {
+    "_note": "Ordinary successful logon",
+    "EventID": 4624,
+    "Channel": "Security",
+    "Provider_Name": "Microsoft-Windows-Security-Auditing",
+    "Computer": "WS01.corp.local",
+    "TargetUserName": "jdoe",
+    "LogonType": 2
+  },
+  {
+    "_note": "Event log service shutting down during a normal reboot (1100), not a clear",
+    "EventID": 1100,
+    "Channel": "Security",
+    "Provider_Name": "Microsoft-Windows-Eventlog",
+    "Computer": "WS01.corp.local"
+  },
+  {
+    "_note": "Same Event ID from a different provider must not match",
+    "EventID": 1102,
+    "Channel": "Application",
+    "Provider_Name": "SomeVendorApp",
+    "Computer": "WS01.corp.local"
+  }
+]

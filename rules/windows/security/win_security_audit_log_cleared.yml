@@ -1,0 +1,27 @@
+title: Windows Security Audit Log Cleared
+id: fb89e521-2d49-44b4-a7c7-e0aa5959d013
+status: experimental
+description: |
+  Detects the Windows Security event log being cleared (Event ID 1102).
+  Attackers clear this log to remove evidence of logons, privilege use and
+  process execution after they have done their work.
+references:
+  - https://attack.mitre.org/techniques/T1070/001/
+  - https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/event-1102
+author: Phranavh Sivaraman
+date: 2026-11-21
+tags:
+  - attack.defense-evasion
+  - attack.t1070.001
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 1102
+    Provider_Name: Microsoft-Windows-Eventlog
+  condition: selection
+falsepositives:
+  - Administrators deliberately clearing the log during a rebuild or a documented maintenance window
+  - Lab and test machines that are reset often
+level: high

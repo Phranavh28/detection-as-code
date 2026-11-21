@@ -1,0 +1,35 @@
+[
+  {
+    "_note": "Service account added to Domain Admins (global group, 4728)",
+    "EventID": 4728,
+    "Channel": "Security",
+    "Computer": "DC01.corp.local",
+    "SubjectUserName": "jdoe",
+    "SubjectDomainName": "CORP",
+    "MemberName": "CN=svc_backup,OU=Service Accounts,DC=corp,DC=local",
+    "TargetUserName": "Domain Admins",
+    "TargetDomainName": "CORP",
+    "TargetSid": "S-1-5-21-3623811015-3361044348-30300820-512"
+  },
+  {
+    "_note": "User added to the local Administrators group on a workstation (4732)",
+    "EventID": 4732,
+    "Channel": "Security",
+    "Computer": "WS07.corp.local",
+    "SubjectUserName": "helpdesk01",
+    "MemberName": "CORP\\contractor7",
+    "TargetUserName": "Administrators",
+    "TargetDomainName": "Builtin",
+    "TargetSid": "S-1-5-32-544"
+  },
+  {
+    "_note": "Renamed / non English Enterprise Admins group still caught by its SID (4756)",
+    "EventID": 4756,
+    "Channel": "Security",
+    "Computer": "DC01.corp.local",
+    "SubjectUserName": "jdoe",
+    "MemberName": "CN=jdoe,OU=Users,DC=corp,DC=local",
+    "TargetUserName": "Organisations Admins",
+    "TargetSid": "S-1-5-21-3623811015-3361044348-30300820-519"
+  }
+]
